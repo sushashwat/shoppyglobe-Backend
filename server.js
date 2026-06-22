@@ -2,16 +2,20 @@
 // This MUST be one of the very first lines, before anything tries to use process.env 
 require("dotenv").config();
 
-
 // Import the Express library we installed earlier
 const express  = require("express");
 const connectDB = require("./config/db");
+const productRoutes = require("./routes/productRoutes")
 
 // Connects to MongoDB before the app starts handling requests 
 connectDB();
 
 // Create the Express application
 const app = express();
+
+
+// Tell express to use the product routes for any URL starting with /products
+app.use("/products", productRoutes);
 
 // Basic test route - confirms the server is Alive when u visit the homepage 
 app.get("/", (req,res)=>{
