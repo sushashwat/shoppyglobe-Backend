@@ -25,6 +25,9 @@ app.get("/", (req,res)=>{
     res.send("Shoppy-Globe Api is running");
 });
 
+const cartRoutes = require ("./routes/cartRoutes"); // add with your other route imports 
+app.use("/cart", cartRoutes); // add with your other app.use lines 
+
 // Port comes from .env, falls back to 5100 if not set (good practice)
 const PORT = process.env.PORT || 5100;
 
@@ -32,6 +35,5 @@ const PORT = process.env.PORT || 5100;
 app.listen(PORT,()=>{
     console.log(`Server is running on http://localhost:${PORT}`);
 });
-
 
 
